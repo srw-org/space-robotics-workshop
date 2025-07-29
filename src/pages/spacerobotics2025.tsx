@@ -1492,10 +1492,10 @@ export default function Home({ data }) {
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '15px', marginTop: '10px' }}>
                 <div style={{ display: 'flex', alignItems: 'center' }}>
                   <Img 
-                    fixed={data.dennisHong.childImageSharp.fixed} 
+                    fixed={data.ignacioGLopezFrancos.childImageSharp.fixed} 
                     style={{ borderRadius: '50%', width: '40px', height: '40px', marginRight: '8px' }}
                   />
-                  <span>Dennis Hong (UCLA)</span>
+                  <span>Ignacio López-Francos (NASA) <em>(Session Chair)</em></span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center' }}>
                   <Img 
@@ -1503,6 +1503,20 @@ export default function Home({ data }) {
                     style={{ borderRadius: '50%', width: '40px', height: '40px', marginRight: '8px' }}
                   />
                   <span>Brice Howard (Sentric Solutions)</span>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                  <Img 
+                    fixed={data.hiroOno.childImageSharp.fixed} 
+                    style={{ borderRadius: '50%', width: '40px', height: '40px', marginRight: '8px' }}
+                  />
+                  <span>Hiro Ono (NASA JPL)</span>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                  <Img 
+                    fixed={data.luisSentis.childImageSharp.fixed} 
+                    style={{ borderRadius: '50%', width: '40px', height: '40px', marginRight: '8px' }}
+                  />
+                  <span>Luis Sentis (University of Texas at Austin)</span>
                 </div>
               </div>
             </div>
