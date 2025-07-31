@@ -1518,6 +1518,13 @@ export default function Home({ data }) {
                   />
                   <span>Luis Sentis (University of Texas at Austin)</span>
                 </div>
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                  <Img 
+                    fixed={data.yueWang.childImageSharp.fixed} 
+                    style={{ borderRadius: '50%', width: '40px', height: '40px', marginRight: '8px' }}
+                  />
+                  <span>Yue Wang (USC, NVIDIA)</span>
+                </div>
               </div>
             </div>
             <Abstract
@@ -1743,39 +1750,148 @@ export default function Home({ data }) {
           <strong>Congratulations to all the authors whose work was selected!</strong> Thank you to everyone who submitted, and to our reviewers for their valuable feedback and dedication to maintaining the quality of the workshop.
         </p>
         
-        <ul style={{ marginTop: '20px', lineHeight: '1.8' }}>
-          <li>
-            <strong>"Learning Surface and Vertical Mobility for Enceladus Direct Ocean Access"</strong> – Jack Naish
-          </li>
-          
-          <li>
-            <strong>"Drift-Free Visual Compass Leveraging Digital Twins for Cluttered Environments"</strong> – Jungil Ham, Ryan Soussan, Brian Coltin, Hoyeong Chun, Pyojin Kim
-          </li>
-          
-          <li>
-            <strong>"Experimental Study of Magnetically-Actuated Satellite Swarm: Controllability Extension via Time-Integrated Control with Geometry Learning"</strong> – Yuta Takahashi, Seang Shim, Yusuke Sawanishi, Hideki Yoshikado, Masaru Ishida, Noritsuna Imamura, Sumio Morioka, Shin-Ichiro Sakai, Takahiro Inagawa
-          </li>
-          
-          <li>
-            <strong>"Validation and Verification of Safety-Critical Aspects of Autonomy in Orbital Robotics"</strong> – Roberto Lampariello, Caroline Specht, Margherita Piccinin, Hrishik Mishra, Marco De Stefano, Martin Stelzer
-          </li>
-          
-          <li>
-            <strong>"Adaptive Science Operations in Deep Space Missions using Robust Precomputed Autonomy"</strong> – Grace Kim, Hailey Warner, Duncan Eddy, Mykel Kochenderfer, Evan Astle, Zachary Booth, Edward Balaban
-          </li>
-          
-          <li>
-            <strong>"Free-Flying Intra-Vehicular Robots: A Review"</strong> – Jordan Kam, Kathryn Hamilton, Brian Coltin, Trey Smith
-          </li>
-          
-          <li>
-            <strong>"RA-SR: A 16–32-Channel Low-Power FPGA Multi-Protocol ESC Controller for Space Robotics"</strong> – Mohamed El-Hadedy, Landry Reynard, Andrea Guerrieri, Benny Cheng, Wen-Mei Hwu
-          </li>
-          
-          <li>
-            <strong>"A Rigid-Soft Underactuated Tendon-Driven Gripper Prototype for Free-Flying Manipulation"</strong> <em></em> – Jordan Kam, Andres Mora Vargas, Brian Coltin, Stephanie Woodman
-          </li>
-        </ul>
+        <div style={{ 
+          display: 'grid', 
+          gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', 
+          gap: '20px', 
+          marginTop: '30px' 
+        }}>
+          {/* Best Paper Award Winner */}
+          <div style={{ 
+            position: 'relative',
+            background: 'linear-gradient(135deg, #ffd700, #ffed4e)',
+            padding: '4px',
+            borderRadius: '8px',
+            boxShadow: '0 4px 15px rgba(255, 215, 0, 0.3)'
+          }}>
+            <div style={{
+              position: 'absolute',
+              top: '-10px',
+              left: '20px',
+              background: '#d4af37',
+              color: 'white',
+              padding: '5px 15px',
+              borderRadius: '15px',
+              fontSize: '12px',
+              fontWeight: 'bold',
+              zIndex: 1,
+              boxShadow: '0 2px 5px rgba(0,0,0,0.2)'
+            }}>
+              🏆 BEST PAPER AWARD
+            </div>
+            <Paper
+              title="Learning Surface and Vertical Mobility for Enceladus Direct Ocean Access"
+              abstract="Of the places in our solar system that may support life, Enceladus stands out due to the presence of complex organic molecules and possible hydrothermal vent activity in its subsurface ocean, with direct access theorized via fissure vents at its icy south pole. However, robotic exploration of the lunar interior requires first negotiating complex, undulatory surface terrain before transitioning into a vertical descent mode once inside the fissure system. Such a mission profile demands advances in multi-modal robotic locomotion which to-date are yet to be realized. In this work, we take a step towards enabling this vision by contributing a learning-based hierarchical reinforcement learning controller capable of robust surface locomotion and vertical fissure mobility with a snake-like morphology. Simulation experiments provide a proof-of-concept validation of our method. Our work takes a small step towards the broader idea of Robotic Exploration 3.0 [51] - intelligent robots capable of adapting at mission-time, enabling one-shot exploration of celestial bodies."
+              authors={{"Jack Naish": ""}}
+              affiliations={[]}
+              pdf="/papers/SMC-ITSCC_2025_paper_134.pdf"
+            />
+          </div>
+
+          {/* Best Paper Nominees */}
+          <div style={{ 
+            position: 'relative',
+            background: 'linear-gradient(135deg, #c0c0c0, #e8e8e8)',
+            padding: '4px',
+            borderRadius: '8px',
+            boxShadow: '0 4px 15px rgba(192, 192, 192, 0.3)'
+          }}>
+            <div style={{
+              position: 'absolute',
+              top: '-10px',
+              left: '20px',
+              background: '#8c8c8c',
+              color: 'white',
+              padding: '5px 15px',
+              borderRadius: '15px',
+              fontSize: '12px',
+              fontWeight: 'bold',
+              zIndex: 1,
+              boxShadow: '0 2px 5px rgba(0,0,0,0.2)'
+            }}>
+              🥈 BEST PAPER NOMINEE
+            </div>
+            <Paper
+              title="Experimental Study of Magnetically-Actuated Satellite Swarm: Controllability Extension via Time-Integrated Control with Geometry Learning"
+              abstract="This study aims to experimentally validate the principle of large-scale satellite swarm control using magnetic field interactions generated by satellite-mounted magnetorquers. This actuation is an attractive solution for the long-term formation maintenance of multiple satellites, and has mainly been demonstrated for the two-satellite position control in a ground testbed. However, when the number of satellites N increases to more than three, this system contains fundamental challenges: 1) underactuation, 2) nonholonomic constraints, 3) scalability issues, and 4) high computational burden. To overcome these constraints, one practical solution is time-integrated current control, where the actuator outputs are time-varying, ensuring that the average acceleration matches the commanded value. We numerically and experimentally investigate two key aspects via time-varying magnetic actuation: (1) enhanced controllability on averaged dynamics with the theoretically guaranteed error bound, and (2) decentralized current management. Our primary application is the distributed space antennas through the integration of autonomous robotics technology and phased-array antenna systems. To emulate the orbital dynamics as equivalently as possible, we designed a ground-based experimental setup using an air-bearing platform, where position control experiments were conducted with custom-designed coils. This study can work as a proof of concept along with the tutorial paper on electromagnetic spacecraft control."
+              authors={{"Yuta Takahashi": "", "Seang Shim": "", "Yusuke Sawanishi": "", "Hideki Yoshikado": "", "Masaru Ishida": "", "Noritsuna Imamura": "", "Sumio Morioka": "", "Shin-Ichiro Sakai": "", "Takahiro Inagawa": ""}}
+              affiliations={[]}
+              pdf="/papers/SMC-ITSCC_2025_paper_123.pdf"
+            />
+          </div>
+
+          <div style={{ 
+            position: 'relative',
+            background: 'linear-gradient(135deg, #c0c0c0, #e8e8e8)',
+            padding: '4px',
+            borderRadius: '8px',
+            boxShadow: '0 4px 15px rgba(192, 192, 192, 0.3)'
+          }}>
+            <div style={{
+              position: 'absolute',
+              top: '-10px',
+              left: '20px',
+              background: '#8c8c8c',
+              color: 'white',
+              padding: '5px 15px',
+              borderRadius: '15px',
+              fontSize: '12px',
+              fontWeight: 'bold',
+              zIndex: 1,
+              boxShadow: '0 2px 5px rgba(0,0,0,0.2)'
+            }}>
+              🥈 BEST PAPER NOMINEE
+            </div>
+            <Paper
+              title="Validation and Verification of Safety-Critical Aspects of Autonomy in Orbital Robotics"
+              abstract="The validation and verification (V&V) of safety-critical functionalities of space robots engaged in autonomous task-execution is facing new challenges. The recognized advantage of optimal control and machine learning for providing planning and perception capabilities onboard a robotic spacecraft calls for the development of new V&V techniques to ensure robust, explainable, and resilient autonomous behavior. This paper presents V&V techniques and developments at DLR of safety-critical aspects specifically for the autonomous robotic capture of a target satellite. The paper first addresses optimal control for robustly planning the robot arm's interception with a predefined grasping point on the tumbling target satellite, as well as for providing the means of performing mission planning in view of operational and motion constraints. Deep-learning based perception algorithms are then addressed, underlining the advantage of these with respect to classical approaches and presenting new methods for their V&V. Finally, a novel model-based design approach is presented for rapid prototyping and simulation of orbital robotic spacecraft engaged in the close proximity operations of interest."
+              authors={{"Roberto Lampariello": "", "Caroline Specht": "", "Margherita Piccinin": "", "Hrishik Mishra": "", "Marco De Stefano": "", "Martin Stelzer": ""}}
+              affiliations={[]}
+              pdf="/papers/SMC-ITSCC_2025_paper_129.pdf"
+            />
+          </div>
+
+          {/* Other Papers */}
+          <Paper
+            title="RA-SR: A 16–32-Channel Low-Power FPGA Multi-Protocol ESC Controller for Space Robotics"
+            abstract="Future space-robotics missions—ranging from urban eVTOL air taxis with 36 ducted fans to 16+-rotor Martian drones and free-flying in-orbit servicers—demand highly reliable, low-latency, and energy-efficient motor control across large thruster arrays. To address these challenges, we present Reliable Architecture for Space Robotics (RA-SR), a fully hardware-only FPGA ESC controller implemented on the Xilinx Zynq PYNQ-Z2. RA-SR scales from 16 to 32 channels, supports PWM, PPM, and DShot via dedicated IP cores and dynamic protocol selection, and offloads timing into FPGA fabric to achieve < 50 ns jitter and zero CPU overhead. On MicroBlaze-V, RA-SR drives 16 ESCs at 0.8 W, while on the ARM Cortex-A9 it manages 32 ESCs at 1.9 W. We characterize resource usage (3.24 % LUTs, 1.79 % FFs for 4 channels; 11.08 % LUTs, 5.39 % FFs for 32 channels), validate performance with 8-ESC bench tests and 32-stream synthetic loop-backs, and compare energy efficiency against commercial controllers such as Pixhawk 4. Finally, we outline future work on telemetry feedback integration, optimized power distribution, and AI-driven flight control for extended space-robotics applications."
+            authors={{"Mohamed El-Hadedy": "", "Landry Reynard": "", "Andrea Guerrieri": "", "Benny Cheng": "", "Wen-Mei Hwu": ""}}
+            affiliations={[]}
+            pdf="/papers/SMC-ITSCC_2025_paper_119.pdf"
+          />
+
+          <Paper
+            title="Drift-Free Visual Compass Leveraging Digital Twins for Cluttered Environments"
+            abstract="Drift-free and accurate rotational motion tracking is one of the most critical components for visual navigation of free-flying robots operating in microgravity environments, such as the International Space Station (ISS), where unrestricted 360-degree rotational motion is intrinsic. Traditional methods based on the Manhattan world (MW) assumption struggle in such environments due to occlusions and excessive outlier features. To address these issues, we present a novel digital twin-based outlier rejection method that leverages the ISS 3D CAD model to improve the robustness of Manhattan world detection and drift-free 3-DoF rotational motion estimation. By matching observed line features against the digital twin, our approach effectively filters out clutter-induced outliers and extracts reliable structural features. The proposed method requires only a single line and plane to estimate absolute and drift-free orientation, enabling lightweight and efficient computation. Experimental evaluations on the Astrobee dataset demonstrate that our method achieves state-of-the-art performance with significantly lower rotation errors in highly cluttered environments."
+            authors={{"Jungil Ham": "", "Ryan Soussan": "", "Brian Coltin": "", "Hoyeong Chun": "", "Pyojin Kim": ""}}
+            affiliations={[]}
+            pdf="/papers/SMC-ITSCC_2025_paper_121.pdf"
+          />
+
+          <Paper
+            title="Adaptive Science Operations in Deep Space Missions using Robust Precomputed Autonomy"
+            abstract="Robust autonomy in deep space science mission operations is essential where communication delays prevent real-time ground control from addressing challenges of environmental uncertainty. This is problematic for astrobiological missions, which must navigate strict contamination constraints while coordinating multi-instrument measurements to interpret transient, time-sensitive biosignatures. To address these challenges, we present an offline autonomy framework that performs adaptive, resource-aware sequencing of scientific instruments under uncertainty. It integrates a Bayesian network, which probabilistically models the likelihood of observing different biotic signatures from a sample, with a risk-sensitive partially observable Markov decision process (POMDP) to produce adaptive instrument sequences. As a case study, we apply our methodology to the Enceladus Orbilander's proposed Life Detection Suite (LDS) of science instruments. We demonstrate how to design Bayesian networks that accurately model the likelihood of detecting biological signatures in collected samples and display how POMDP reward function tuning can be used to optimize competing objectives such as reducing sample state uncertainty and maximizing detection sensitivity. Our method's performance is evaluated against the recorded Enceladus Orbilander Concept of Operations (ConOps) for binary classifier accuracy and efficiency. These results establish our method as a significant step toward realizing robust deep space autonomy."
+            authors={{"Grace Kim": "", "Hailey Warner": "", "Duncan Eddy": "", "Mykel Kochenderfer": "", "Evan Astle": "", "Zachary Booth": "", "Edward Balaban": ""}}
+            affiliations={[]}
+            pdf="/papers/SMC-ITSCC_2025_paper_130.pdf"
+          />
+
+          <Paper
+            title="A Rigid-Soft End-Effector Mechanism for Microgravity Free-Flying Manipulation"
+            abstract="Compliant robotic mechanisms offer a novel approach to grasping complex geometries through contact-rich manipulation. In extreme uncertain environments such as space, a contact-rich compliant grasp could offer a mechanism for robust manipulation under conditions such as microgravity. This article presents the design and fabrication of an rigid-soft end-effector mechanism prototype for conforming manipulation. The end-effector is a prototype of the three-finger underactuated tendon-driven gripper with rigid claw-shaped joints and inflatable compliant fabricated padding surrounding the grasping region. These pads can be pneumatically inflated to conform around an object within the gripper's claw-like grasp. This rigid-soft mechanism could allow for increased surface area and contact-rich manipulation with less reliance on actuating the gripper's motors. This article presents the design, mechanism, and material selection of the gripper. This prototype could be attached to an intra-vehicular free-flying robot like Astrobee to perform a variety of free-flying manipulation tasks in space."
+            authors={{"Jordan Kam": "", "Andres Mora Vargas": "", "Stephanie Woodman": "", "Brian Coltin": ""}}
+            affiliations={[]}
+            pdf="/papers/SMC-ITSCC_2025_paper_135.pdf"
+          />
+
+          <Paper
+            title="Free-Flying Intra-Vehicular Robots: A Review"
+            abstract="Intra-vehicular free-flying robots have been operating inside the International Space Station (ISS) for over two decades. With the launching of the Synchronized Position Hold, Engage, Reorient, Experimental Satellites (SPHERES) free-flyer in 2003, there have been a total of six free-flying robots aboard ISS. These free-flyers include SPHERES, the Internal Ball Camera (Int-Ball), Crew Interactive MObile companioN (CIMON), Astrobee, Crew Interactive MObile companioN-2 (CIMON-2) and Internal Ball Camera 2 (Int-Ball2). Intra-vehicular free-flyers have expanded space robot capabilities in habitat inspection, terrestrial K-12 education outreach, microgravity research and development (R&D), and other intra-vehicular activities (IVA) in microgravity. This survey paper provides a comprehensive review of these six ISS intra-vehicular free-flying robots including their initial development details, intended Concept of Operation (ConOps), high-level system overview, microgravity R&D efforts, and contribution to the space robotics state-of-the-art. This paper will then cover some of the unanswered research questions for the development of future free-flyers. As future space stations emerge into new on-orbit destinations, the next-generation of free-flyers will build on the capabilities of these six ISS intra-vehicular free-flying robots and expand into novel areas of IVA."
+            authors={{"Jordan Kam": "", "Kathryn Hamilton": "", "Brian Coltin": "", "Trey Smith": ""}}
+            affiliations={[]}
+            pdf="/papers/SMC-ITSCC_2025_paper_136.pdf"
+          />
+        </div>
       </Section>
 
       <Section title="Organizers">
