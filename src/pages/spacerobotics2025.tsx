@@ -179,7 +179,7 @@ export function Video(props: {
           <PlayCircleFilled
             style={{
               fontSize: props.fontSize,
-              opacity: videoHovered ? 0.15 : 0.9,
+              opacity: videoHovered ? 0.08 : 0.55,
             }}
             className={style.videoPlay}
           />
@@ -961,7 +961,7 @@ export default function Home({ data }) {
       <Alert
         message={
           <>
-            <strong>Registration is now open!</strong> Secure your spot at the 2nd Space Robotics Workshop. <strong>A full SMC-IT/SCC conference registration is required to participate in the workshop.</strong> <a href="https://cvent.me/vAOdOx" target="_blank" rel="noopener noreferrer">Register here</a>.
+            <strong>The 2nd Space Robotics Workshop has concluded.</strong> Thank you to our organizing team, scientific committee, keynote speakers, paper authors, and sponsors for making it a success. <a href="#talks">Recordings are now available here</a>.
           </>
         }
         type="success"
@@ -970,16 +970,16 @@ export default function Home({ data }) {
       />
       <Section title="Overview">
         <p>
-          The <strong>2nd Space Robotics Workshop (SRW)</strong> will be held in conjunction with the <strong><a href="https://2025.smcit-scc.space/" target="_blank" rel="noopener noreferrer">IEEE SMC-IT/SCC</a></strong> from <strong>July 28-29, 2025</strong>, at the <strong><a href="https://californiasciencecenter.org/" target="_blank" rel="noopener noreferrer">California Science Center</a></strong> in <strong>Los Angeles, CA</strong>. The workshop will bring together experts in robotics, autonomy, AI, and aerospace to shape the next era of innovation driving our return to the Moon, the sustainable exploration of Mars and beyond, and the expansion of commercial activity beyond Earth orbit.
+          The <strong>2nd Space Robotics Workshop (SRW)</strong> took place alongside the <strong><a href="https://2025.smcit-scc.space/" target="_blank" rel="noopener noreferrer">IEEE SMC-IT/SCC</a></strong> on <strong>July 28-29, 2025</strong>, at the <strong><a href="https://californiasciencecenter.org/" target="_blank" rel="noopener noreferrer">California Science Center</a></strong> in <strong>Los Angeles, CA</strong>. The workshop brought together experts in robotics, autonomy, AI, and aerospace to shape the next era of innovation driving our return to the Moon, the sustainable exploration of Mars and beyond, and the expansion of commercial activity beyond Earth orbit.
         </p>
         <p>
-          As national space agencies and commercial ventures capitalize on next-generation robotics, we stand at a critical juncture. Increasing mission complexity, evolving space architectures, expanding commercial services, and the rapid progress in AI present both unprecedented opportunities and new challenges in how we explore, operate, and build a sustainable space economy. Rapid advances in terrestrial robotics are directly influencing the development of space robotics and are poised to play a central role in enabling more autonomous, resilient, and ambitious missions, while also laying the groundwork for future off-world economic activities.
+          As national space agencies and commercial ventures capitalize on next-generation robotics, we are at a critical juncture. Increasing mission complexity, evolving space architectures, expanding commercial services, and rapid progress in AI present both unprecedented opportunities and new challenges in how we explore, operate, and build a sustainable space economy. Advances in terrestrial robotics are directly influencing the development of space robotics and are poised to play a central role in enabling more autonomous, resilient, and ambitious missions, while also laying the groundwork for future off‑world economic activities.
         </p>
         <p>
-          Building on the foundation laid during our <a href="https://2024.smcit-scc.space/workshop-srw.html" target="_blank" rel="noopener noreferrer">inaugural event</a>, this year's workshop will focus on the recent breakthroughs in the field of robotics, the current state of space robotics, the rise of the commercial space sector supporting the lunar economy, and emerging concepts aimed at enabling more capable, adaptable, and cost-effective missions.
+          Building on the foundation laid during our <a href="https://2024.smcit-scc.space/workshop-srw.html" target="_blank" rel="noopener noreferrer">inaugural event</a>, this year’s workshop focused on recent breakthroughs in robotics, the current state of space robotics, the rise of the commercial space sector supporting the lunar economy, and emerging concepts aimed at enabling more capable, adaptable, and cost‑effective missions.
         </p>
         <p>
-          The program will be organized around a set of focused technical sessions, with keynote talks, spotlight presentations, panels, and a poster session.
+          The program featured focused technical sessions with keynote talks, spotlight presentations, panels, and a poster session.
         </p>
         {/* <Alert
           type="warning" // This makes the background yellow
@@ -1131,13 +1131,7 @@ export default function Home({ data }) {
             noMargin={true}
           />
           <Speaker
-            organizations={["UCLA"]}
-            name="Dennis Hong"
-            fixedImg={data.dennisHong.childImageSharp.fixed}
-            noMargin={true}
-          />
-          <Speaker
-            organizations={["Honeybee Robotics (Blue Origin)"]}
+            organizations={["Honeybee Robotics"]}
             name="Dean Bergman"
             fixedImg={data.deanBergman.childImageSharp.fixed}
             noMargin={true}
@@ -1184,12 +1178,12 @@ export default function Home({ data }) {
             fixedImg={data.hiroOno.childImageSharp.fixed}
             noMargin={true}
           />
-          <Speaker
+          {/* <Speaker
             organizations={["USC"]}
             name="Feifei Qian"
             fixedImg={data.feifeiQian.childImageSharp.fixed}
             noMargin={true}
-          />
+          /> */}
           <Speaker
             organizations={["SoftServe"]}
             name="Lutz Richter"
@@ -1231,7 +1225,7 @@ export default function Home({ data }) {
       </Section>
 
       <Section title="Workshop Agenda">
-        <p><strong>All sessions will be held in Room CR4</strong></p>
+        <p><strong>All sessions will be held in Room CR16</strong></p>
         
         <h2>Day 1 - Monday, July 28</h2>
         <Timeline>
@@ -1597,6 +1591,218 @@ export default function Home({ data }) {
         </Timeline>
       </Section>
 
+      <Section title="Talks">
+        <p>
+          We are excited to make the session recordings public to the community. Click any card below to jump to a session and watch the talks.
+        </p>
+        <div className={style.sessionCards}>
+          <a href="#session-01">
+            <div className={style.sessionCard}>
+              <img className={style.sessionCardImage} src={'/images/session-cards/s01_card.png'} alt="Session 01" />
+              <div className={style.sessionCardLabel}>Session 01</div>
+            </div>
+          </a>
+          <a href="#session-02">
+            <div className={style.sessionCard}>
+              <img className={style.sessionCardImage} src={'/images/session-cards/s02_card.png'} alt="Session 02" />
+              <div className={style.sessionCardLabel}>Session 02</div>
+            </div>
+          </a>
+          <a href="#session-03">
+            <div className={style.sessionCard}>
+              <img className={style.sessionCardImage} src={'/images/session-cards/s03_card.png'} alt="Session 03" />
+              <div className={style.sessionCardLabel}>Session 03</div>
+            </div>
+          </a>
+          <a href="#session-04">
+            <div className={style.sessionCard}>
+              <img className={style.sessionCardImage} src={'/images/session-cards/s04_card.png'} alt="Session 04" />
+              <div className={style.sessionCardLabel}>Session 04</div>
+            </div>
+          </a>
+          <a href="#session-05">
+            <div className={style.sessionCard}>
+              <img className={style.sessionCardImage} src={'/images/session-cards/s05_card.png'} alt="Special Session" />
+              <div className={style.sessionCardLabel}>Special Session</div>
+            </div>
+          </a>
+        </div>
+
+        <SubSection title="Opening Remarks">
+          <span id={'session-00'} />
+          <TalkItem
+            title="Opening Remarks"
+            speaker="Ignacio López‑Francos"
+            affiliations={["NASA"]}
+            description="Short overview of the workshop and objectives."
+            youtubeUrl="https://youtu.be/v0zSowoLx_4?si=0JZ7xw2kWJsPD2Ok"
+            slidesUrl="/slides/SRW_S00_Opening_LopezFrancos.pdf"
+            fixedThumb={data.s00.childImageSharp.fixed}
+          />
+        </SubSection>
+
+        <SubSection title="Session 01 — Unlocking the Offworld Economy with Robotic Technologies">
+          <span id={'session-01'} />
+          <TalkItem
+            title="STARMINE: An End-to-End Robotic System for Lunar Mining and LOX Production"
+            speaker="Brian Yamauchi"
+            affiliations={["Starpath Robotics"]}
+            description="How do we refuel on the Moon? Brian Yamauchi (Principal Autonomy Engineer, Starpath) presents STARMINE, a three-part system—Rover, Plant, Tower—designed to mine icy regolith at the lunar south pole and produce LOX for lander refueling. The autonomy stack enables repeated traverses from sunlit power to permanently shadowed craters, closing the loop from excavation to oxygen production at scale."
+            youtubeUrl="https://youtu.be/tLiZQh_tePo?si=D3N-12kfFkBIeR3w"
+            slidesUrl="/slides/SRW_S01_T1_Yamauchi.pdf"
+            fixedThumb={data.s01_01.childImageSharp.fixed}
+          />
+          <TalkItem
+            title="Towards Autonomous Driving on the Moon"
+            speaker="Prof. Grace X. Gao"
+            affiliations={["Stanford"]}
+            description="As a new era of lunar exploration unfolds with NASA’s Artemis mission and numerous other planned missions, autonomous operations are paramount for sustained presence and complex robotic activity. Prof. Grace X. Gao (Stanford NAVLab) highlights key research efforts, including the establishment of a “Moon-GPS” satellite network (LunaNet) and building a neural twin of the Moon surface using Neural Radiance Fields (NeRFs). These contributions support NASA’s robot mobility missions such as CADRE and Endurance, and notably secured a first-place win in the NASA Lunar Autonomy Challenge."
+            youtubeUrl="https://youtu.be/yNGf2nQ9cVg?si=4-dVQKKw_TjknoqF"
+            slidesUrl="/slides/SRW_S01_T2_Gao.pdf"
+            fixedThumb={data.s01_02.childImageSharp.fixed}
+          />
+          <TalkItem
+            title="Blue Collar Robots and Regolith"
+            speaker="Rob Mueller"
+            affiliations={["NASA KSC"]}
+            description="NASA senior technologist Rob Mueller (co-founder of KSC’s Swamp Works Lab and the Granular Mechanics & Regolith Operations Lab) outlines a rising class of “blue-collar robots” for heavy regolith handling, construction, and ISRU on the Moon and Mars—industrial capabilities essential to make surface operations economical and repeatable."
+            youtubeUrl="https://youtu.be/44ZYY0hwKG4?si=mXnkj2UZj4FNTuOn"
+            slidesUrl="/slides/SRW_S01_T3_Mueller.pdf"
+            fixedThumb={data.s01_03.childImageSharp.fixed}
+          />
+          <TalkItem
+            title="Flight Computers to Support Flight Robotic Systems"
+            speaker="Dennis Wingo"
+            affiliations={["Skycorp"]}
+            description="Legendary Dennis Wingo (Skycorp) focuses on overcoming the historical lag in making robust flight computers capable of supporting robotic systems on the Moon and in deep space. He details Skycorp’s efforts in flight-qualifying advanced computer hardware, such as the PolarFire system-on-a-chip, Jetson Nano, and future HPSC systems, which are designed for autonomous navigation and AI modeling in harsh space environments. The talk emphasizes rigorous testing, radiation protection, and conduction cooling as critical for reliable operation of these systems in lunar and deep space conditions."
+            youtubeUrl="https://youtu.be/dT2QbJTB1go?si=h37yoc8VAMY0IFU6"
+            slidesUrl="#"
+            fixedThumb={data.s01_04.childImageSharp.fixed}
+          />
+          <TalkItem
+            title="Session 01 Panel"
+            speaker="Moderated by Maggie Wang"
+            affiliations={["Panel: Brian Yamauchi, Grace Gao, Rob Mueller, Dennis Wingo, Brice Howard"]}
+            description="The panel addressed critical challenges for an off-world economy, highlighting the lack of lunar infrastructure for navigation and communication, and significant environmental difficulties such as long shadows, regolith slip, and thermal extremes that impede autonomous driving and data collection for AI. Discussions emphasized the need for resilient robotic designs that expect and rapidly recover from failures, the development of robust, flight-qualified computing hardware for AI and autonomy, and extensive testing—underscoring a necessary shift toward private funding to accelerate these advancements for sustained lunar operations."
+            youtubeUrl="https://youtu.be/_lHGtHMJGiM?si=xmL6QKHlJpcvh-I9"
+            slidesUrl="#"
+            fixedThumb={data.s01_p.childImageSharp.fixed}
+          />
+        </SubSection>
+
+        <SubSection title="Session 02">
+          <span id={'session-02'} />
+          <TalkItem
+            title="Building and Placing Humanoid Robots On and Around Mars"
+            speaker="Luis Sentis"
+            affiliations={["UT Austin", "Apptronik"]}
+            description="Dr. Luis Sentis (Professor at University of Texas at Austin / Co-founder of Apptronik) discusses the rapid advancements in Earth-based humanoid robotics, driven by generative AI and foundational models, and proposes two key strategies for their Martian deployment. These include adapting off-the-shelf humanoids with astronaut suits for enhanced manipulation and designing specialized liquid-cooled actuators capable of withstanding extreme space conditions, aiming for low-maintenance, multi-purpose robotic systems for future Mars missions."
+            youtubeUrl="https://youtu.be/YZKCJi60cJY"
+            slidesUrl="#"
+            fixedThumb={data.s02_01.childImageSharp.fixed}
+          />
+          <TalkItem
+            title="Humans To Mars in the Age of AI"
+            speaker="Pascal Lee"
+            affiliations={["Mars Institute", "SETI Institute"]}
+            description="In this thought-provoking talk, Dr. Pascal Lee explores human–robot teaming as AI progresses from narrow capabilities to AGI integrated into androids, envisioning “Artificial Astronauts” (and eventually “Artificial Super Astronauts”) as our emissaries to help explore and settle Mars and beyond."
+            youtubeUrl="https://youtu.be/SuNc9FlB2Ig"
+            slidesUrl="/slides/SRW_S02_T2_Lee.pdf"
+            fixedThumb={data.s02_02.childImageSharp.fixed}
+          />
+          <TalkItem
+            title="From Space to Street - Autonomy Lessons from Deep-Space Human Mission"
+            speaker="Ignacio López-Francos"
+            affiliations={["NASA"]}
+            description="Long-duration human missions to Mars face critical communication delays and blackouts, making real-time ground support impossible and requiring crews to handle unexpected anomalies independently. To address this, an “Earth-independent operations” approach is proposed, focusing on developing integrated on-board hardware and software. This strategy empowers crews to independently manage critical situations by leveraging on-board analytics, statistical and rule-based AI, and physics models to enhance situational awareness, anomaly response, and procedure execution—reducing reliance on extensive ground control."
+            youtubeUrl="https://youtu.be/8WNu5vO5VK0"
+            slidesUrl="/slides/SRW_S02_T3_LopezFrancos.pdf"
+            fixedThumb={data.s02_03.childImageSharp.fixed}
+          />
+          <TalkItem
+            title="Autonomy for Mars Robotics Missions"
+            speaker="Maruthi R. Akella"
+            affiliations={["UT Austin"]}
+            description="Autonomy is presented as a necessity for Mars missions, driven by communication delays that demand extensive onboard decision-making for both crewed and uncrewed operations. This is addressed through research focused on learning, perception, and execution, with a strong emphasis on establishing safety and trust guarantees for dynamic and unpredictable scenarios. A critical technical challenge highlighted is robust Positioning, Navigation, and Timing (PNT), which necessitates a scalable architecture for the Martian environment capable of overcoming communication blackouts during critical entry, descent, and landing phases."
+            youtubeUrl="https://youtu.be/yRG2Z1nZgjI"
+            slidesUrl="/slides/SRW_S02_T4_Akella.pptx.pdf"
+            fixedThumb={data.s02_04.childImageSharp.fixed}
+          />
+          <TalkItem
+            title="Session 02 Panel"
+            speaker="Moderator: Luis Sentis"
+            affiliations={["Panel: Ignacio López-Francos, Maruthi R. Akella, Pascal Lee, Luis Sentis"]}
+            description="A focused discussion on the crucial technical challenges for Mars missions, particularly the need for trust, safety, and certifiability in autonomous systems—alongside the long-term vision of self-repairing “artificial astronauts” and the use of digital twins."
+            youtubeUrl="https://youtu.be/g36BIXrHX9M"
+            slidesUrl="#"
+            fixedThumb={data.s02_p.childImageSharp.fixed}
+          />
+        </SubSection>
+
+        <SubSection title="Session 03">
+          <span id={'session-03'} />
+          <TalkItem
+            title="To Boldly Go Where No Robots Have Gone Before"
+            speaker="Hiro Ono"
+            affiliations={["NASA JPL"]}
+            description="Historically, robotic space exploration has progressed through incrementally sophisticated missions, but this approach is now constrained by budget, flight opportunities, and cruise times for exploring challenging deep-space environments. NASA JPL’s Hiro Ono proposes a new paradigm (RSE 3.0) of single-shot missions where robots or teams of robots adapt their behavior after arrival, increasing complexity as they learn about the new environment—enabled by versatile robotic hardware and onboard intelligence."
+            youtubeUrl="https://youtu.be/8EnH6GXnc0g"
+            slidesUrl="/slides/SRW_S03_T0_Ono.pdf"
+            fixedThumb={data.s03_00.childImageSharp.fixed}
+          />
+          <TalkItem
+            title="The Big Questions of Solar System Exploration"
+            speaker="Lindy Elkins‑Tanton"
+            affiliations={["UC Berkeley"]}
+            description="What are the biggest scientific questions of solar system exploration, and how much do we really know about them? What will the role of robotic exploration be in finding the biggest answers? Starting with “Are we alone?”, this talk walks through some of the hottest unsolved solar system mysteries and how we can bring technology to bear in answering them."
+            youtubeUrl="https://youtu.be/JkeCsQa6jhw"
+            slidesUrl="/slides/SRW_S03_T1_Elkins-Tanton.pdf"
+            fixedThumb={data.s03_01.childImageSharp.fixed}
+          />
+          <TalkItem
+            title="Autonomy for One-Shot Missions"
+            speaker="Dean Bergman"
+            affiliations={["Honeybee Robotics"]}
+            description="Honeybee has been developing robotic systems for deep-space missions for decades. The deeper we get into the solar system and the more unforgiving terrains we explore, the greater the need for autonomy and adaptability. This presentation highlights examples of what Honeybee is considering for such one-shot missions to ensure mission success."
+            youtubeUrl=""
+            slidesUrl="/slides/SRW_S03_T2_Bergman.pdf"
+            fixedThumb={data.s03_02.childImageSharp.fixed}
+          />
+          <TalkItem
+            title="Toward Adaptivity by Design: Lessons from Space Mission Operations Beyond the Plan"
+            speaker="Hiro Ono"
+            affiliations={["NASA JPL"]}
+            description="Space exploration inherently confronts the unknown, necessitating adaptive mission operations despite meticulous planning—a need historically addressed by ground teams reactively improvising solutions to anomalies. This talk analyzes past missions to distill design principles for future “adaptivity by design,” advocating for flexible, sensor-rich hardware and autonomous onboard intelligence to enable radically adaptive, one-shot exploration of extreme environments."
+            youtubeUrl="https://youtu.be/o-52awJ9meo"
+            slidesUrl="/slides/SRW_S03_T3_Ono.pdf"
+            fixedThumb={data.s03_03.childImageSharp.fixed}
+          />
+          <TalkItem
+            title="TESSERAE: Robotic Self-Assembly for In-Space Construction"
+            speaker="Annika Rollock"
+            affiliations={["Aurelia Institute"]}
+            description="The TESSERAE (Tessellated Electromagnetic Space Structures for the Exploration of Reconfigurable, Adaptive Environments) paradigm introduces a novel approach to in-space construction through autonomous self-assembly of modular, tile-based structures, utilizing electropermanent magnets and an onboard sensing suite. Taking advantage of microgravity and launched in an unconfigured stack, TESSERAE’s early prototypes have validated principles of magnetic docking, fault diagnosis, and recovery on parabolic flights and the ISS—paving the way for next-generation habitats, space-based solar power, and other large-scale space infrastructure."
+            youtubeUrl="https://youtu.be/WXN0LAv-onI"
+            slidesUrl="/slides/SRW_S03_T4_Rollock.pdf"
+            fixedThumb={data.s03_04.childImageSharp.fixed}
+          />
+          <TalkItem
+            title="Session 03 Panel"
+            speaker="Moderator: Hiro Ono"
+            affiliations={["Panel: Dean Bergman, Annika Rollock, Hiro Ono"]}
+            description="Building on the session’s theme, the panel discusses the imperative of embedding adaptability directly into the design of future space systems and mission operations. Drawing from practical experiences, the conversation explores strategies for moving beyond reactive improvisation to proactively address the inherent unknowns of deep-space exploration."
+            youtubeUrl="https://youtu.be/yspz8UXlh5Q"
+            slidesUrl="#"
+            fixedThumb={data.s03_p.childImageSharp.fixed}
+          />
+        </SubSection>
+
+        <SubSection title="Spotlight Sessions">
+          <span id={'session-05'} />
+          <p>Talks coming soon.</p>
+        </SubSection>
+      </Section>
+
       <Section title="Call for Papers">
         <Alert
           message={
@@ -1922,18 +2128,19 @@ export default function Home({ data }) {
 
       <Section title="Sponsors">
         <p>
-          The Space Robotics 2025 Workshop is sponsored by the following
-          organizations:
+          We are grateful for the support of the following organizations that contributed a small part in making the 2nd Space Robotics Workshop a success:
         </p>
         <p>
           <center>
             <div className={style.sponsorContainer} style={{ textAlign: "center" }}>
-              {/* <a href="https://www.nvidia.com/" target="_blank">
-                <img src={NVIDIA} alt="NVIDIA" className={style.nvidia} />
-              </a> */}
-
               <a href="https://www.softserveinc.com/" target="_blank">
                 <img src={SOFTSERVE} alt="SOFTSERVE" className={style.softserve} />
+              </a>
+              <a href="https://www.nvidia.com/" target="_blank">
+                <img src={NVIDIA} alt="NVIDIA" className={style.nvidia} />
+              </a>
+              <a href="https://www.alphadata.com/" target="_blank" style={{ display: 'inline-block' }}>
+                <img src={'/images/sponsors/alphadata-logo.png'} alt="Alpha Data" className={style.nvidia} />
               </a>
             </div>
           </center>
@@ -1948,6 +2155,7 @@ export default function Home({ data }) {
           <LinkedinFilled className={style.footerIcon} />
         </a>
       </footer>
+
     </PageWrapper>
   );
 }
@@ -1979,6 +2187,10 @@ export const query = graphql`
   }
 
   query {
+    # generic video placeholder (use default 16:9 if no specific thumb yet)
+    videoPlaceholder: file(relativePath: { eq: "spacerobotics2025/default.jpeg" }) {
+      ...VideoThumbnail
+    }
     # get data for each organizer from the siteMetadata
     allSite {
       nodes {
@@ -1997,6 +2209,29 @@ export const query = graphql`
         }
       }
     }
+
+    # Talks thumbnails (16:9)
+    s00: file(relativePath: { eq: "talks/s00_thumb.png" }) { ...VideoThumbnail }
+    s01_01: file(relativePath: { eq: "talks/s01_01_thumb.png" }) { ...VideoThumbnail }
+    s01_02: file(relativePath: { eq: "talks/s01_02_thumb.png" }) { ...VideoThumbnail }
+    s01_03: file(relativePath: { eq: "talks/s01_03_thumb.png" }) { ...VideoThumbnail }
+    s01_04: file(relativePath: { eq: "talks/s01_04_thumb.png" }) { ...VideoThumbnail }
+    s01_p: file(relativePath: { eq: "talks/s01_p_thumb.png" }) { ...VideoThumbnail }
+
+    # S02 thumbnails
+    s02_01: file(relativePath: { eq: "talks/s02_01_thumb.png" }) { ...VideoThumbnail }
+    s02_02: file(relativePath: { eq: "talks/s02_02_thumb.png" }) { ...VideoThumbnail }
+    s02_03: file(relativePath: { eq: "talks/s02_03_thumb.png" }) { ...VideoThumbnail }
+    s02_04: file(relativePath: { eq: "talks/s02_04_thumb.png" }) { ...VideoThumbnail }
+    s02_p: file(relativePath: { eq: "talks/s02_p_thumb.png" }) { ...VideoThumbnail }
+
+    # S03 thumbnails
+    s03_00: file(relativePath: { eq: "talks/s03_00_thumb.png" }) { ...VideoThumbnail }
+    s03_01: file(relativePath: { eq: "talks/s03_01_thumb.png" }) { ...VideoThumbnail }
+    s03_02: file(relativePath: { eq: "talks/s03_02_thumb.png" }) { ...VideoThumbnail }
+    s03_03: file(relativePath: { eq: "talks/s03_03_thumb.png" }) { ...VideoThumbnail }
+    s03_04: file(relativePath: { eq: "talks/s03_04_thumb.png" }) { ...VideoThumbnail }
+    s03_p: file(relativePath: { eq: "talks/s03_p_thumb.png" }) { ...VideoThumbnail }
 
     # speaker pictures
     default: file(relativePath: { eq: "spacerobotics2025/default.jpeg" }) {
@@ -2175,5 +2410,50 @@ export const query = graphql`
     edwardBalabanOrg: file(relativePath: { eq: "scientific-committee/edwardBalaban.jpeg" }) {
       ...FluidImage
     }
+    talkThumbPlaceholder: file(relativePath: { eq: "spacerobotics2025/default.jpeg" }) {
+      ...FaceThumbnail
+    }
   }
 `;
+
+export const TalkItem = (props: {
+  title: string;
+  speaker: string;
+  affiliations?: string[];
+  description?: string;
+  youtubeUrl?: string;
+  slidesUrl?: string;
+  fixedThumb: FixedObject;
+}) => (
+  <div style={{ display: "flex", padding: "16px 0", borderBottom: "1px solid #e8ecf2" }}>
+    <div style={{ marginRight: 16 }}>
+      {props.youtubeUrl ? (
+        <Video fontSize="45px" url={props.youtubeUrl}>
+          <Img fixed={props.fixedThumb} />
+        </Video>
+      ) : (
+        <Img fixed={props.fixedThumb} />
+      )}
+    </div>
+    <div style={{ flex: 1 }}>
+      <div style={{ fontWeight: 600, fontSize: 18 }}>{props.title}</div>
+      <div style={{ color: "#555", margin: "4px 0 8px" }}>
+        {props.speaker}
+        {props.affiliations && props.affiliations.length ? `, ${props.affiliations.join(", ")}` : ""}
+      </div>
+      {props.description ? <div style={{ marginBottom: 8, fontSize: 14, lineHeight: 1.45 }}>{props.description}</div> : null}
+      <div style={{ display: "flex", gap: 8 }}>
+        {props.youtubeUrl && (
+          <a href={props.youtubeUrl} target="_blank" style={{ display: "inline-flex", alignItems: "center", padding: "6px 10px", border: "1px solid #d5dae3", borderRadius: 4 }}>
+            Watch talk <LaunchIcon style={{ fontSize: 16, marginLeft: 6 }} />
+          </a>
+        )}
+        {props.slidesUrl && (
+          <a href={props.slidesUrl} target="_blank" style={{ display: "inline-flex", alignItems: "center", padding: "6px 10px", border: "1px solid #d5dae3", borderRadius: 4 }}>
+            View slides <LaunchIcon style={{ fontSize: 16, marginLeft: 6 }} />
+          </a>
+        )}
+      </div>
+    </div>
+  </div>
+);
