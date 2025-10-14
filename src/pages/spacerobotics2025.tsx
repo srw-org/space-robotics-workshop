@@ -188,6 +188,48 @@ export function Video(props: {
     </a>
   );
 }
+
+// Spotlight entries styled to mirror TalkItem typography and buttons
+export const SpotlightEntry = (props: {
+  title: string;
+  speaker: string;
+  talkUrl: string;
+  slidesUrl: string; // use '#' to render a disabled button
+  paperUrl: string;
+}) => (
+  <div style={{ marginBottom: 12 }}>
+    <div style={{ fontWeight: 600, fontSize: 16 }}>{props.title}</div>
+    <div style={{ color: "#555", margin: "4px 0 8px" }}>{props.speaker}</div>
+    <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+      <a href={props.talkUrl} target="_blank" style={{ display: "inline-flex", alignItems: "center", padding: "6px 10px", border: "1px solid #d5dae3", borderRadius: 4 }}>Watch talk</a>
+      <a href={props.slidesUrl} target="_blank" style={{ display: "inline-flex", alignItems: "center", padding: "6px 10px", border: "1px solid #d5dae3", borderRadius: 4, ...(props.slidesUrl === '#' ? { opacity: 0.6, pointerEvents: 'none' } : {}) as any }}>View slides</a>
+      <a href={props.paperUrl} target="_blank" style={{ display: "inline-flex", alignItems: "center", padding: "6px 10px", border: "1px solid #d5dae3", borderRadius: 4 }}>View paper</a>
+    </div>
+  </div>
+);
+
+export const SpotlightBlock = (props: {
+  title: string; // e.g., "Block 1"
+  videoUrl: string;
+  fixedThumb: FixedObject;
+  entries: Array<{ title: string; speaker: string; talkUrl: string; slidesUrl: string; paperUrl: string }>;
+}) => (
+  <div style={{ display: "flex", padding: "16px 0", borderBottom: "1px solid #e8ecf2" }}>
+    <div style={{ marginRight: 16 }}>
+      <Video fontSize="45px" url={props.videoUrl}>
+        <Img fixed={props.fixedThumb} />
+      </Video>
+    </div>
+    <div style={{ flex: 1 }}>
+      <div style={{ fontWeight: 600, fontSize: 18, marginBottom: 6 }}>{props.title}</div>
+      <div>
+        {props.entries.map((e, idx) => (
+          <SpotlightEntry key={`${props.title}-${idx}`} title={e.title} speaker={e.speaker} talkUrl={e.talkUrl} slidesUrl={e.slidesUrl} paperUrl={e.paperUrl} />
+        ))}
+      </div>
+    </div>
+  </div>
+);
 /**
  * Return true if an email is formatted correctly, otherwise false.
  * Taken from https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript
@@ -1626,6 +1668,12 @@ export default function Home({ data }) {
               <div className={style.sessionCardLabel}>Special Session</div>
             </div>
           </a>
+          <a href="#session-spotlight">
+            <div className={style.sessionCard}>
+              <img className={style.sessionCardImage} src={'/images/session-cards/s06_card.png'} alt="Spotlight Session" />
+              <div className={style.sessionCardLabel}>Spotlight</div>
+            </div>
+          </a>
         </div>
 
         <SubSection title="Opening Remarks">
@@ -1681,16 +1729,15 @@ export default function Home({ data }) {
           />
           <TalkItem
             title="Session 01 Panel"
-            speaker="Moderated by Maggie Wang"
-            affiliations={["Panel: Brian Yamauchi, Grace Gao, Rob Mueller, Dennis Wingo, Brice Howard"]}
+            speaker="Moderator: Maggie Wang"
+            affiliations={["Panelists: Brian Yamauchi, Grace Gao, Rob Mueller, Dennis Wingo, Brice Howard"]}
             description="The panel addressed critical challenges for an off-world economy, highlighting the lack of lunar infrastructure for navigation and communication, and significant environmental difficulties such as long shadows, regolith slip, and thermal extremes that impede autonomous driving and data collection for AI. Discussions emphasized the need for resilient robotic designs that expect and rapidly recover from failures, the development of robust, flight-qualified computing hardware for AI and autonomy, and extensive testing—underscoring a necessary shift toward private funding to accelerate these advancements for sustained lunar operations."
             youtubeUrl="https://youtu.be/_lHGtHMJGiM?si=xmL6QKHlJpcvh-I9"
-            slidesUrl="#"
             fixedThumb={data.s01_p.childImageSharp.fixed}
           />
         </SubSection>
 
-        <SubSection title="Session 02">
+        <SubSection title="Session 02 — Mars Settlement Starts with Autonomy and Robotics">
           <span id={'session-02'} />
           <TalkItem
             title="Building and Placing Humanoid Robots On and Around Mars"
@@ -1731,15 +1778,14 @@ export default function Home({ data }) {
           <TalkItem
             title="Session 02 Panel"
             speaker="Moderator: Luis Sentis"
-            affiliations={["Panel: Ignacio López-Francos, Maruthi R. Akella, Pascal Lee, Luis Sentis"]}
+            affiliations={["Panelists: Ignacio López-Francos, Maruthi R. Akella, Pascal Lee, Luis Sentis"]}
             description="A focused discussion on the crucial technical challenges for Mars missions, particularly the need for trust, safety, and certifiability in autonomous systems—alongside the long-term vision of self-repairing “artificial astronauts” and the use of digital twins."
             youtubeUrl="https://youtu.be/g36BIXrHX9M"
-            slidesUrl="#"
             fixedThumb={data.s02_p.childImageSharp.fixed}
           />
         </SubSection>
 
-        <SubSection title="Session 03">
+        <SubSection title="Session 03 — One-Shot Interplanetary Exploration With Software-Defined Robotic Systems">
           <span id={'session-03'} />
           <TalkItem
             title="To Boldly Go Where No Robots Have Gone Before"
@@ -1789,17 +1835,146 @@ export default function Home({ data }) {
           <TalkItem
             title="Session 03 Panel"
             speaker="Moderator: Hiro Ono"
-            affiliations={["Panel: Dean Bergman, Annika Rollock, Hiro Ono"]}
+            affiliations={["Panelists: Dean Bergman, Annika Rollock, Hiro Ono"]}
             description="Building on the session’s theme, the panel discusses the imperative of embedding adaptability directly into the design of future space systems and mission operations. Drawing from practical experiences, the conversation explores strategies for moving beyond reactive improvisation to proactively address the inherent unknowns of deep-space exploration."
             youtubeUrl="https://youtu.be/yspz8UXlh5Q"
-            slidesUrl="#"
             fixedThumb={data.s03_p.childImageSharp.fixed}
           />
         </SubSection>
 
-        <SubSection title="Spotlight Sessions">
+        <SubSection title="Session 04 — High-Fidelity Simulation and Digital Twins for Space Robotics">
+          <span id={'session-04'} />
+          <TalkItem
+            title="Using Digital Twins for &quot;Body&quot; and &quot;Mind&quot; Design in Robotics"
+            speaker="Dan Negrut"
+            affiliations={["UW-Madison"]}
+            description="How do you integrate physical design and autonomy for complex systems like Artemis vehicles? Dan Negrut presents the open-source Chrono framework, which uses Level 1 Digital Twins to test hypotheses and Level 2 super-fast simulations (sometimes thousands of times faster than real time) necessary for control tasks like Model Predictive Control (MPC). Chrono supports integrated &quot;body and mind design&quot; by simultaneously modeling multi-physics agent dynamics (e.g., deformable wheels on deformable terrain) and the vehicle's autonomy stack, often running on the actual hardware in a hardware-in-the-loop configuration."
+            youtubeUrl="https://youtu.be/gFeBOQ0A6KI"
+            slidesUrl="#"
+            fixedThumb={data.s04_01.childImageSharp.fixed}
+          />
+          <TalkItem
+            title="Scaling Up Robotic Data with Minimal Supervision"
+            speaker="Yue Wang"
+            affiliations={["USC/NVIDIA"]}
+            description="How can robot learning scale data when real-world collection is costly and dangerous, especially for space robotics? The &quot;Geometry, Vision, and Learning Lab&quot; at USC that Yue Wang leads develops algorithms to convert abundant, non-robotic internet data into &quot;robotic ready data&quot; by reconstructing 3D information from images and videos using methods like 3D Gaussian Splatting. This enables the simulation of new driving scenarios and, separately, facilitates versatile zero-shot robotic manipulation by learning and transferring actionable knowledge represented as affordance from out-of-domain sources, including animations."
+            youtubeUrl="https://youtu.be/KX9ipd5kwl8"
+            slidesUrl="/slides/SRW_S04_T2_Wang.pdf"
+            fixedThumb={data.s04_02.childImageSharp.fixed}
+          />
+          <TalkItem
+            title="Mission Critical: Simulate First"
+            speaker="Lutz Richter"
+            affiliations={["SoftServe"]}
+            description="Why is simulation critical for mission success and derisking in space robotics? Lutz Richter (SoftServe) advocates for a &quot;Simulate First&quot; approach, utilizing the Nvidia Omniverse/Isaac Sim ecosystem to create simulation twins. SoftServe models hypothetical systems, such as a thruster-propelled lunar drone concept for autonomous resource prospecting, and employs a co-simulation architecture (using FMI/FMU) to model critical interactions, like ground vehicle mobility and excavation in lunar soil, thereby supporting design and development."
+            youtubeUrl="https://youtu.be/mjfNhS2-BjE"
+            slidesUrl="/slides/SRW_S04_T3_Richter.pdf"
+            fixedThumb={data.s04_04.childImageSharp.fixed}
+          />
+          <TalkItem
+            title="Session 04 Panel"
+            speaker="Moderator: Lutz Richter"
+            affiliations={["Panelists: Dan Negrut, Yue Wang"]}
+            description="The discussion of this panel centers directly on the practical application of high-fidelity simulation and digital twins in robotics, especially for space exploration systems. Examples of these practical applications include using simulators like Chrono to train AI-driven robotic systems, simulating complex environments and agent dynamics for integrated &quot;mind and body&quot; design, and generating synthetic data for testing AI agents, such as those using vision language models."
+            youtubeUrl="https://youtu.be/ehr_8ZEW4ns"
+            fixedThumb={data.s04_p.childImageSharp.fixed}
+          />
+        </SubSection>
+
+        <SubSection title="Special Session — Earth and Beyond — The State of Robotics">
           <span id={'session-05'} />
-          <p>Talks coming soon.</p>
+          <TalkItem
+            title="The Future of Space Robotics"
+            speaker="Brice Howard"
+            affiliations={["Syntric Solutions"]}
+            description="How can the space industry effectively commercialize and capture the projected $1.8 trillion opportunity using robotics? Brice Howard argues that space robotics must follow the commercialization roadmap seen in the mining industry, shifting toward scalable equipment-based operations. A significant disparity exists between hope and reality due to a perception gap and reliance on bespoke designs; only one mission (Orbital Express, 2004) has successfully demonstrated the key skill of dynamic grappling. The path forward demands immediate investment in affordable, robust, and modular robotic tool sets. Crucially, the industry must prioritize remote and semi-autonomous operations to enable immediate monetization and provide necessary on-orbit testing, rather than requiring full autonomy as a prerequisite."
+            youtubeUrl="https://youtu.be/yLB7lYdqAn4"
+            slidesUrl="/slides/SRW_S05_T1_Howard.pdf"
+            fixedThumb={data.s05_01.childImageSharp.fixed}
+          />
+          <TalkItem
+            title="Special Session Panel — Earth and Beyond: The State of Robotics"
+            speaker="Moderator: Ignacio López-Francos"
+            affiliations={["Panelists: Brice Howard, Hiro Ono, Yue Wang"]}
+            description="Building on the session's theme, the speakers in the panel discuss the imperative of embedding adaptability directly into the design of future space systems and mission operations. Drawing from practical experiences, the conversation explores strategies for moving beyond reactive improvisation to proactively address the inherent unknowns of deep space exploration."
+            youtubeUrl="https://youtu.be/PQCMlpSHKwg"
+            fixedThumb={data.s05_p.childImageSharp.fixed}
+          />
+        </SubSection>
+
+        <SubSection title="Spotlight Session">
+          <span id={'session-spotlight'} />
+          <TalkItem
+            title="Experimental Study of Magnetically-Actuated Satellite Swarm: Controllability Extension via Time-Integrated Control with Geometry Learning"
+            speaker="Yuta Takahashi"
+            affiliations={["Institute of Science Tokyo", "Interstellar Technologies"]}
+            youtubeUrl="https://www.youtube.com/watch?v=ENMwrACDQvw&t=0s"
+            slidesUrl="/slides/SRW_Spot_01_Takahashi.pdf"
+            paperUrl="/papers/SMC-ITSCC_2025_paper_123.pdf"
+            fixedThumb={data.spot_T1.childImageSharp.fixed}
+          />
+          <TalkItem
+            title="Validation and Verification of Safety-Critical Aspects of Autonomy in Orbital Robotics"
+            speaker="Roberto Lampariello"
+            affiliations={["Institute of Robotics and Mechatronics, DLR"]}
+            youtubeUrl="https://www.youtube.com/watch?v=ENMwrACDQvw&t=780s"
+            slidesUrl="/slides/SRW_Spot_02_Lampariello.pdf"
+            paperUrl="/papers/SMC-ITSCC_2025_paper_129.pdf"
+            fixedThumb={data.spot_T2.childImageSharp.fixed}
+          />
+          <TalkItem
+            title="Learning Surface and Vertical Mobility for Enceladus Direct Ocean Access"
+            speaker="Jack Naish"
+            affiliations={["Independent"]}
+            youtubeUrl="https://www.youtube.com/watch?v=ENMwrACDQvw&t=1903s"
+            paperUrl="/papers/SMC-ITSCC_2025_paper_134.pdf"
+            fixedThumb={data.spot_T3.childImageSharp.fixed}
+          />
+          <TalkItem
+            title="Adaptive Science Operations in Deep Space Missions Using Offline Belief State Planning"
+            speaker="Hailey Warner"
+            affiliations={["Stanford Intelligent Systems Lab (SISL)", "Stanford University"]}
+            youtubeUrl="https://www.youtube.com/watch?v=ENMwrACDQvw&t=2889s"
+            slidesUrl="/slides/SRW_Spot_04_Warner.pdf"
+            paperUrl="/papers/SMC-ITSCC_2025_paper_130.pdf"
+            fixedThumb={data.spot_T4.childImageSharp.fixed}
+          />
+          <TalkItem
+            title="Drift-Free Visual Compass Leveraging Digital Twins for Cluttered Environments"
+            speaker="Jungil Ham"
+            affiliations={["Machine Perception and Intelligence Lab", "Gwangju Institute of Science and Technology"]}
+            youtubeUrl="https://www.youtube.com/watch?v=JFdF9Q15G8I&t=18s"
+            slidesUrl="/slides/SRW_Spot_05_Jungil.pdf"
+            paperUrl="/papers/SMC-ITSCC_2025_paper_121.pdf"
+            fixedThumb={data.spot_T5.childImageSharp.fixed}
+          />
+          <TalkItem
+            title="A Rigid-Soft Underactuated Tendon-Driven Gripper Prototype for Free-Flying Manipulation"
+            speaker="Jordan Kam"
+            affiliations={["University of California, Berkeley"]}
+            youtubeUrl="https://www.youtube.com/watch?v=JFdF9Q15G8I&t=875s"
+            slidesUrl="/slides/SRW_Spot_06_Kam.pdf"
+            paperUrl="/papers/SMC-ITSCC_2025_paper_135.pdf"
+            fixedThumb={data.spot_T6.childImageSharp.fixed}
+          />
+          <TalkItem
+            title="RA-SR: A 16–32-Channel Low-Power FPGA Multi-Protocol ESC Controller for Space Robotics"
+            speaker="Mohamed El-Hadedy"
+            affiliations={["California State Polytechnic University, Pomona"]}
+            youtubeUrl="https://www.youtube.com/watch?v=JFdF9Q15G8I&t=1686s"
+            slidesUrl="/slides/SRW_Spot_07_ElHadedy.pdf"
+            paperUrl="/papers/SMC-ITSCC_2025_paper_119.pdf"
+            fixedThumb={data.spot_T7.childImageSharp.fixed}
+          />
+          <TalkItem
+            title="Free-Flying Intra-Vehicular Robots: A Review"
+            speaker="Jordan Kam"
+            affiliations={["University of California, Berkeley"]}
+            youtubeUrl="https://www.youtube.com/watch?v=JFdF9Q15G8I&t=2787s"
+            slidesUrl="/slides/SRW_Spot_08_Kam.pdf"
+            paperUrl="/papers/SMC-ITSCC_2025_paper_136.pdf"
+            fixedThumb={data.spot_T8.childImageSharp.fixed}
+          />
         </SubSection>
       </Section>
 
@@ -2233,6 +2408,24 @@ export const query = graphql`
     s03_04: file(relativePath: { eq: "talks/s03_04_thumb.png" }) { ...VideoThumbnail }
     s03_p: file(relativePath: { eq: "talks/s03_p_thumb.png" }) { ...VideoThumbnail }
 
+    # Session 04 thumbnails
+    s04_01: file(relativePath: { eq: "talks/s04_01_thumb.png" }) { ...VideoThumbnail }
+    s04_02: file(relativePath: { eq: "talks/s04_02_thumb.png" }) { ...VideoThumbnail }
+    s04_04: file(relativePath: { eq: "talks/s04_04_thumb.png" }) { ...VideoThumbnail }
+    s04_p: file(relativePath: { eq: "talks/s04_p_thumb.png" }) { ...VideoThumbnail }
+
+    # Special + Spotlight thumbnails
+    s05_01: file(relativePath: { eq: "talks/s05_01_thumb.png" }) { ...VideoThumbnail }
+    s05_p:  file(relativePath: { eq: "talks/s05_p_thumb.png" }) { ...VideoThumbnail }
+    spot_T1: file(relativePath: { eq: "talks/spot_T1_thumb.png" }) { ...VideoThumbnail }
+    spot_T2: file(relativePath: { eq: "talks/spot_T2_thumb.png" }) { ...VideoThumbnail }
+    spot_T3: file(relativePath: { eq: "talks/spot_T3_thumb.png" }) { ...VideoThumbnail }
+    spot_T4: file(relativePath: { eq: "talks/spot_T4_thumb.png" }) { ...VideoThumbnail }
+    spot_T5: file(relativePath: { eq: "talks/spot_T5_thumb.png" }) { ...VideoThumbnail }
+    spot_T6: file(relativePath: { eq: "talks/spot_T6_thumb.png" }) { ...VideoThumbnail }
+    spot_T7: file(relativePath: { eq: "talks/spot_T7_thumb.png" }) { ...VideoThumbnail }
+    spot_T8: file(relativePath: { eq: "talks/spot_T8_thumb.png" }) { ...VideoThumbnail }
+
     # speaker pictures
     default: file(relativePath: { eq: "spacerobotics2025/default.jpeg" }) {
       ...FaceThumbnail
@@ -2423,6 +2616,7 @@ export const TalkItem = (props: {
   description?: string;
   youtubeUrl?: string;
   slidesUrl?: string;
+  paperUrl?: string;
   fixedThumb: FixedObject;
 }) => (
   <div style={{ display: "flex", padding: "16px 0", borderBottom: "1px solid #e8ecf2" }}>
@@ -2451,6 +2645,11 @@ export const TalkItem = (props: {
         {props.slidesUrl && (
           <a href={props.slidesUrl} target="_blank" style={{ display: "inline-flex", alignItems: "center", padding: "6px 10px", border: "1px solid #d5dae3", borderRadius: 4 }}>
             View slides <LaunchIcon style={{ fontSize: 16, marginLeft: 6 }} />
+          </a>
+        )}
+        {props.paperUrl && (
+          <a href={props.paperUrl} target="_blank" style={{ display: "inline-flex", alignItems: "center", padding: "6px 10px", border: "1px solid #d5dae3", borderRadius: 4 }}>
+            View paper <LaunchIcon style={{ fontSize: 16, marginLeft: 6 }} />
           </a>
         )}
       </div>
