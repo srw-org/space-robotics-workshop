@@ -258,8 +258,8 @@
 
   .sessionCardImage {
     display: block;
-    width: 220px;
-    height: 300px; // unify height; a little shorter look
+    width: 176px; // keep original aspect ratio with new 240px height (was 220x300)
+    height: 240px; // reduced by ~20% so all cards fit
     object-fit: cover;
     border-radius: 12px;
   }
@@ -292,6 +292,8 @@
     }
   }
 }
+
+// removed spotlight grid in favor of standard TalkItem layout
 
 .speaker {
   margin-bottom: 25px;
