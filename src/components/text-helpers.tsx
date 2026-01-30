@@ -21,7 +21,7 @@ export const SubSection = (props: {
 );
 
 // headerId is used to convert a header string into its hash
-// (i.e., embodied-ai.org/#header-hash-name).
+// (i.e., space-robots.org/#header-hash-name).
 export function headerId(header: string) {
   // Handle undefined, null, or non-string values
   if (!header || typeof header !== 'string') {

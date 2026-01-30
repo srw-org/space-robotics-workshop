@@ -67,9 +67,15 @@ export default class PageWrapper extends React.Component<
     };
   }
 
+  getChildrenArray() {
+    return React.Children.toArray(this.props.children).filter(
+      (child: any) => child && child.props && child.props.title
+    );
+  }
+
   updateHeaderLocations() {
     this.setState({
-      headerIdLocations: this.props.children.map(
+      headerIdLocations: this.getChildrenArray().map(
         (section: any) => {
           const id = headerId(section.props.title);
           const element = document.getElementById(id);
@@ -115,7 +121,7 @@ export default class PageWrapper extends React.Component<
         <div className={style.contentWrapper}>
           <div className={style.mainContent}>{this.props.children}</div>
           <div className={style.toc}>
-            {this.props.children.map((section, i: number) => (
+            {this.getChildrenArray().map((section: any, i: number) => (
               <div
                 className={style.tocHeader}
                 key={section.props.title}
