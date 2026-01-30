@@ -10,8 +10,8 @@ const icra2026: WorkshopData = {
   ],
   keyInfo: {
     conference: "IEEE International Conference on Robotics and Automation (ICRA)",
-    dates: "2026 (exact date TBD)",
-    location: "TBD",
+    dates: "June 01 - June 05, 2026",
+    location: "Vienna, Austria",
     timezone: "TBD",
     registrationUrl: "TBD",
     websiteUrl: "TBD",

@@ -9,25 +9,32 @@ import * as style from "./index.module.scss";
 
 const workshops = [
   {
-    title: "Space Robotics 2025",
-    conference: "IEEE SMC-IT/SCC 2025",
+    title: "IROS 2026",
+    conference: "IEEE/RSJ International Conference on Intelligent Robots and Systems",
+    location: "Pittsburgh, PA, USA",
+    dates: "September 27 - October 1, 2026",
+    path: "/iros2026/",
+  },
+  {
+    title: "ICRA 2026",
+    conference: "IEEE International Conference on Robotics and Automation",
+    location: "Vienna, Austria",
+    dates: "June 01 - June 05, 2026",
+    path: "/icra2026/",
+  },
+  {
+    title: "IEEE SMC-IT/SCC 2025",
+    conference: "Space Robotics Workshop",
     location: "Los Angeles, CA",
     dates: "July 28-29, 2025",
     path: "/spacerobotics2025/",
   },
   {
-    title: "ICRA 2026",
-    conference: "IEEE International Conference on Robotics and Automation",
-    location: "TBD",
-    dates: "2026",
-    path: "/icra2026/",
-  },
-  {
-    title: "IROS 2026",
-    conference: "IEEE/RSJ International Conference on Intelligent Robots and Systems",
-    location: "TBD",
-    dates: "2026",
-    path: "/iros2026/",
+    title: "IEEE SMC-IT/SCC 2024",
+    conference: "Space Robotics Workshop",
+    location: "Mountain View, CA",
+    dates: "July 17-18, 2024",
+    externalUrl: "https://2024.smcit-scc.space/workshop-srw.html",
   },
 ];
 
@@ -58,15 +65,37 @@ const IndexPage = () => (
 
     <Section title="Workshops">
       <div className={style.cardGrid}>
-        {workshops.map(workshop => (
-          <Link key={workshop.path} to={workshop.path} className={style.card}>
-            <div className={style.cardTitle}>{workshop.title}</div>
-            <div className={style.cardMeta}>{workshop.conference}</div>
-            <div className={style.cardMeta}>{workshop.location}</div>
-            <div className={style.cardMeta}>{workshop.dates}</div>
-            <div className={style.cardLink}>View workshop</div>
-          </Link>
-        ))}
+        {workshops.map(workshop => {
+          const cardContent = (
+            <>
+              <div className={style.cardTitle}>{workshop.title}</div>
+              <div className={style.cardMeta}>{workshop.conference}</div>
+              <div className={style.cardMeta}>{workshop.location}</div>
+              <div className={style.cardMeta}>{workshop.dates}</div>
+              <div className={style.cardLink}>View workshop</div>
+            </>
+          );
+
+          if (workshop.externalUrl) {
+            return (
+              <a
+                key={workshop.externalUrl}
+                href={workshop.externalUrl}
+                className={style.card}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {cardContent}
+              </a>
+            );
+          }
+
+          return (
+            <Link key={workshop.path} to={workshop.path} className={style.card}>
+              {cardContent}
+            </Link>
+          );
+        })}
       </div>
     </Section>
   </PageWrapper>

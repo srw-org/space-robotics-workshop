@@ -10,8 +10,8 @@ const iros2026: WorkshopData = {
   ],
   keyInfo: {
     conference: "IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)",
-    dates: "2026 (exact date TBD)",
-    location: "TBD",
+    dates: "September 27 - October 1, 2026",
+    location: "Pittsburgh, PA, USA",
     timezone: "TBD",
     registrationUrl: "TBD",
     websiteUrl: "TBD",
