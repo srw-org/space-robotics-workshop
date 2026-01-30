@@ -7,7 +7,6 @@ import { Section, SubSection } from "../components/text-helpers";
 import PageWrapper from "../components/page-wrapper";
 
 import color from "../components/color";
-import { Challenges } from "../components/page-header";
 import { Table, Steps, Timeline, Alert } from "antd";
 import LaunchIcon from "@material-ui/icons/Launch";
 import ReceiptIcon from "@material-ui/icons/Receipt";
@@ -23,13 +22,8 @@ import NVIDIA from "../../static/images/sponsors/nvidia.svg";
 import SOFTSERVE from "../../static/images/sponsors/softserve-logo-big.png";
 import laCompaniesMap from "../../static/images/location/la_companies_map.png";
 
-import SlackLogo from "../../static/icons/slack.svg";
-
 const { Step } = Steps;
 
-// import { Speaker, LiveSession, Video } from "./cvpr2020";
-
-// import { OrganizerPics } from "./cvpr2020";
 import { css } from "@emotion/react";
 
 import "@allenai/varnish/theme.css";
@@ -292,14 +286,6 @@ function ChallengeSpotlight(props: {
     </div>
   );
 }
-
-const challengePageMap = {
-  CHALLENGE_TODO: (
-    <a href="" target="_blank">
-      Comming Soon
-    </a>
-  ),
-};
 
 function EmailSubscription(props: {
   actionIdentifier: string;
@@ -682,108 +668,6 @@ function shuffle(array) {
   return array;
 }
 
-function InlineSlack() {
-  return (
-    <div>
-      <a
-        href="//join.slack.com/t/embodied-aiworkshop/shared_invite/zt-s6amdv5c-gBZQZ7YSktrD_tMhQDjDfg"
-        target="_blank"
-      >
-        <div
-          css={css`
-            display: inline-block;
-            /* border: 1px solid ${color.gray6}; */
-            border-radius: 0px 10px 0px 10px;
-            padding-left: 10px;
-            padding-right: 10px;
-            margin-top: 3px;
-            padding-top: 3px;
-            padding-bottom: 4px;
-            background-color: #4a154b;
-            transition-duration: 0.15s;
-            color: white;
-            &:hover {
-              cursor: pointer;
-              filter: contrast(1.25);
-            }
-            > span,
-            > img {
-              vertical-align: middle;
-            }
-          `}
-        >
-          <img
-            src={SlackLogo}
-            css={css`
-              width: 15px;
-              margin-right: 5px;
-            `}
-          />{" "}
-          <span>
-            Ask questions on <b>Slack</b>
-          </span>
-        </div>
-      </a>
-    </div>
-  );
-}
-
-function Slack() {
-  return (
-    <a
-      href="//join.slack.com/t/embodied-aiworkshop/shared_invite/zt-s6amdv5c-gBZQZ7YSktrD_tMhQDjDfg"
-      target="_blank"
-    >
-      <div
-        css={css`
-          background-color: #4a154b;
-          color: white;
-          padding: 15px 15px;
-          border-radius: 10px 0px 10px 0px;
-          transition-duration: 0.15s;
-
-          &:hover {
-            cursor: pointer;
-            filter: contrast(1.25);
-            box-shadow: 0px 0px 15px 0px ${color.gray6};
-          }
-        `}
-      >
-        <img
-          src={SlackLogo}
-          css={css`
-            height: 20px;
-            vertical-align: middle;
-            margin-right: 7px;
-          `}
-        />
-        <div
-          css={css`
-            display: inline-block;
-            vertical-align: middle;
-          `}
-        >
-          Ask Questions on <b>Slack</b>
-        </div>
-        <div
-          css={css`
-            background-color: white;
-            color: black;
-            padding: 5px;
-            padding-top: 6px;
-            padding-bottom: 3px;
-            padding-left: 5px;
-            margin-top: 12px;
-            border-radius: 10px 0px 10px 0px;
-          `}
-        >
-          Questions can be asked <b>anonymously</b>.
-        </div>
-      </div>
-    </a>
-  );
-}
-
 // First, let's add a function to determine upcoming deadlines
 // Add this near the top of your SpaceRobotics2025Page component
 const isUpcomingDeadline = (deadlineDate) => {
@@ -935,21 +819,6 @@ export default function Home({ data }) {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const challengeData = [
-    {
-      challenge: challengePageMap["CHALLENGE_TODO"],
-      key: "CHALLENGE_TODO",
-      task: "",
-      interactiveActions: "",
-      simulationPlatform: "",
-      sceneDataset: "",
-      observations: "",
-      actionSpace: "",
-      stochasticAcuation: "",
-      winner: "",
-    },
-  ];
-
   // using 4:59 since PST is 5 hours behind AoE.
   const paperDeadline = moment.tz("2022-05-17 04:59", "America/Los_Angeles");
   const currentTime = moment();
@@ -993,12 +862,7 @@ export default function Home({ data }) {
         `,
       }}
       conference="IEEE SMC-IT/SCC 2025 - Los Angeles"
-      rightSide={
-        <Challenges
-          conference="IEEE SMC-IT/SCC 2025"
-          challengeData={Object.values(challengePageMap)}
-        />
-      }
+      rightSide={null}
     >
       <Alert
         message={
@@ -1682,7 +1546,7 @@ export default function Home({ data }) {
             title="Opening Remarks"
             speaker="Ignacio López‑Francos"
             affiliations={["NASA"]}
-            description="Short overview of the workshop and objectives."
+            description="Setting the stage for the workshop, SRW 2025 General Chair Ignacio López-Francos highlights how the space sector is undergoing a rapid technological transformation fueled by sharply reduced launch costs and the exponential decline in the price of both physical robotics and digital intelligence. This convergence positions space robotics as a key mission enabler for ambitious exploration goals such as NASA’s Moon to Mars initiative—underscoring the need to accelerate the deployment and advancement of autonomous systems across the space domain."
             youtubeUrl="https://youtu.be/v0zSowoLx_4?si=0JZ7xw2kWJsPD2Ok"
             slidesUrl="/slides/SRW_S00_Opening_LopezFrancos.pdf"
             fixedThumb={data.s00.childImageSharp.fixed}
@@ -2554,14 +2418,6 @@ export const query = graphql`
     }
 
     # Other pictures
-    ariaDemo: file(relativePath: { eq: "cvpr2024/aria-demo.jpg" }) {
-      ...FluidImage
-    }
-    workshopLocation: file(
-      relativePath: { eq: "cvpr2024/workshop-location.png" }
-    ) {
-      ...FluidImage
-    }
     defaultOrg: file(relativePath: { eq: "spacerobotics2025/default.jpeg" }) {
       ...FluidImage
     }

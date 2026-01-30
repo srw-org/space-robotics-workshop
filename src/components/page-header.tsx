@@ -2,101 +2,77 @@ import React from "react";
 import { Link } from "gatsby";
 import * as style from "./page-header.module.scss";
 import { Popover, Button } from "antd";
-import { DownOutlined, RightOutlined, LeftOutlined } from "@ant-design/icons";
-import SeattleCover from "../../static/images/cvpr2020/cover-transparent.svg";
+import { DownOutlined } from "@ant-design/icons";
 import { css } from "@emotion/react";
 
-//Show the challenges as a dropdown
-export const Challenges = (props: {
-  onLeft?: boolean;
-  conference: string;
-  challengeData: React.ReactNode[];
-}) => (
-  <div className={props.onLeft === true ? style.left : style.right}>
-    <Popover
-      placement={props.onLeft === true ? "bottomLeft" : "bottomRight"}
-      content={
-        <div>
-          {props.challengeData.map((challenge: React.ReactNode) => (
-            <div
-              css={css`
-                text-align: ${props.onLeft === true ? "left" : "right"};
-              `}
-            >
-              {challenge}
-            </div>
-          ))}
-        </div>
-      }
-      trigger="hover"
-    >
-      <Button
-        css={css`
-          background: none !important;
-          color: inherit;
-          border: none;
-          box-shadow: none;
-          padding: 0px;
-          font-size: 15px;
-          &:hover {
-            color: #1d3d7e;
-          }
-        `}
-      >
-        {props.onLeft === true ? (
-          <>
-            <DownOutlined style={{ fontSize: "14px" }} /> {props.conference}{" "}
-            Challenges
-          </>
-        ) : (
-          <>
-            {props.conference} Challenges{" "}
-            <DownOutlined style={{ fontSize: "14px" }} />{" "}
-          </>
-        )}
-      </Button>
-    </Popover>
-  </div>
-);
+// Workshop selector for the header.
+export const OtherYears = (props: { onConference: string }) => {
+  const isSmc2025 = props.onConference.startsWith("IEEE SMC-IT/SCC 2025");
+  const isSmc2024 = props.onConference === "IEEE SMC-IT/SCC 2024";
 
-// This will eventually allow the old workshops (e.g., CVPR 2020)
-// to be accessible from the header. Waiting until 2021 info is up
-// for this to display anything.
-export const OtherYears = (props: { onConference: string }) => (
-  <div className={style.left}>
-    <Popover
-      placement={"bottomLeft"}
-      content={
-        <div>
+  return (
+    <div className={style.left}>
+      <Popover
+        placement={"bottomLeft"}
+        content={
           <div>
-            {props.onConference === "Space Robotics 2025" ? (
-              <>Space Robotics 2025</>
+            <div>
+              {props.onConference === "IROS 2026" ? (
+                <>IROS 2026</>
+              ) : (
+                <Link to="/iros2026">IROS 2026</Link>
+              )}
+            </div>
+          <div>
+            {props.onConference === "ICRA 2026" ? (
+              <>ICRA 2026</>
             ) : (
-              <Link to="/spacerobotics2025">Space Robotics 2025</Link>
+              <Link to="/icra2026">ICRA 2026</Link>
             )}
           </div>
-        </div>
-      }
-      trigger="hover"
-    >
-      <Button
-        css={css`
-          background: none !important;
-          color: inherit;
-          border: none;
-          box-shadow: none;
-          padding: 0px;
-          font-size: 15px;
-          &:hover {
-            color: #1d3d7e !important;
-          }
-        `}
+          <div>
+            {isSmc2025 ? (
+              <>IEEE SMC-IT/SCC 2025</>
+            ) : (
+              <Link to="/spacerobotics2025">IEEE SMC-IT/SCC 2025</Link>
+            )}
+          </div>
+            <div>
+              {isSmc2024 ? (
+                <>IEEE SMC-IT/SCC 2024</>
+              ) : (
+                <a
+                  href="https://2024.smcit-scc.space/workshop-srw.html"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  IEEE SMC-IT/SCC 2024
+                </a>
+              )}
+            </div>
+          </div>
+        }
+        trigger="hover"
       >
-        <DownOutlined style={{ fontSize: "14px" }} /> Space Robotics Workshops
-      </Button>
-    </Popover>
-  </div>
-);
+        <Button
+          css={css`
+            background: none !important;
+            color: inherit;
+            border: none;
+            box-shadow: none;
+            padding: 0px;
+            font-size: 15px;
+            &:hover {
+              color: #1d3d7e !important;
+            }
+          `}
+        >
+          <DownOutlined style={{ fontSize: "14px" }} /> Space Robotics Workshops
+        </Button>
+      </Popover>
+    </div>
+  );
+};
 
 // Sets the page title and the dynamic header. Eventually, this will
 // probably be modularized even further, when future versions come out.
